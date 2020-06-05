@@ -1,21 +1,20 @@
-﻿public class GameInitializer
+﻿public class GamePlayViewController : ViewController<GamePlayView>
 {
     private SceneWireframe _wireframe;
     private IViewControllerFactory _factory;
     
-    public GameInitializer(SceneWireframe wireframe, InspectorViewControllerFactory factory)
+    public GamePlayViewController(GamePlayView view, SceneWireframe wireframe, IViewControllerFactory factory) : base(view)
     {
         _wireframe = wireframe;
         _factory = factory;
     }
 
-    public GameInitializer(SceneWireframe wireframe, AssetLoader assetLoader)
+    public void Setup()
     {
-        _wireframe = wireframe;
-        _factory = new AssetBundleViewControllerFactory(_wireframe, assetLoader);
+        View.Setup(ShowMainMenu);
     }
 
-    public void Init()
+    private void ShowMainMenu()
     {
         var viewController = _factory.CreateMainMenuViewController();
         viewController.Setup();

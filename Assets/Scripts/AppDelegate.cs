@@ -3,7 +3,10 @@
 public class AppDelegate : MonoBehaviour
 {
     [SerializeField] private SceneWireframe _wireframe;
-    [SerializeField] private ViewControllerFactory _factory;
+    [SerializeField] private AssetLoader _assetLoader;
+    
+    [Header("Test Only")]
+    [SerializeField] private InspectorViewControllerFactory _inspectorFactory;
 
     private void Start()
     {
@@ -12,6 +15,6 @@ public class AppDelegate : MonoBehaviour
 
     private void Init()
     {
-        new GameInitializer(_wireframe, _factory).Init();
+        new GameInitializer(_wireframe, _assetLoader).Init();
     }
 }
